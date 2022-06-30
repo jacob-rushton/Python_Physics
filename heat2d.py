@@ -16,7 +16,7 @@ dx = L/N  # m;  change in x
 dy = L/N  # m; change in y; a bit redundant but clear and also had errors when
 # I tried to set it to just dp and simplify
 dt = 5e-4  # s; change in time
-divt = 7.5e-4   # s; change in ime for divergent animation
+divt = 7.5e-4   # s; change in time for divergent animation
 t_end = 10+dt
 Thi, Tmid, Tlow = 400, 250, 200  # in Kelvin
 
@@ -30,8 +30,11 @@ Tp_conv[:, 0], Tp_conv[:, N] = Tlow, Tlow
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
+ax.set_title("Converged Solution")
+ax.set_xlabel("Position (x)")
+ax.set_ylabel("Position (y)")
 im = ax.imshow(T_conv, origin='lower') 
-cb = fig.colorbar(im)
+cb = fig.colorbar(im, label="Temperature (K)")
 
 t = 0.0  # s
 c = dt*D
@@ -72,8 +75,11 @@ Tp_div[:, 0], Tp_div[:, N] = Tlow, Tlow
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
+ax.set_title("Diverged Solution")
+ax.set_xlabel("Position (x)")
+ax.set_ylabel("Position (y)")
 im = ax.imshow(T_div, origin='lower') 
-cb = fig.colorbar(im)
+cb = fig.colorbar(im, label="Temperature (K)")
 
 t_d = 0.0  # s
 f = divt*D
